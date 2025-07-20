@@ -67,11 +67,12 @@
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen transition-colors">
     
     <!-- Sign Up / Welcome Screen -->
-    <div id="welcomeScreen" class="fixed inset-0 bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center z-50 p-4 overflow-y-auto">
-        <div class="max-w-md w-full my-8">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 animate-slide-up max-h-[90vh] overflow-y-auto">
+    <div id="welcomeScreen" class="fixed inset-0 bg-gradient-to-br from-gray-50 to-blue-50 flex items-start justify-center z-50 p-4 overflow-y-auto">
+        <div class="max-w-4xl w-full my-4 pt-8">
+            <!-- Main Sign Up Card -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 animate-slide-up mb-6">
                 <div class="text-center mb-6">
-                    <img src="https://pfst.cf2.poecdn.net/base/image/78cbf24847b03e978c1f5b6aeb4e2a7ba1590d18c5e41634066db8a1d872e68a?w=1080&h=1080" alt="Rival You Logo" class="w-20 h-20 mx-auto mb-4 rounded-2xl shadow-lg">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/6b7d23306073ec0d9f4f85294cc44b0683deebc2eaf7a4f2e055473f13f52033?w=1080&h=1080" alt="Rival You Logo" class="w-32 h-32 mx-auto mb-4 rounded-2xl shadow-lg">
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Welcome to Rival You</h1>
                     <p class="text-gray-600 dark:text-gray-400 mt-2">Turn learning into an epic battle!</p>
                 </div>
@@ -87,136 +88,149 @@
                 </div>
 
                 <!-- Student Sign Up Form -->
-                <div id="studentSignUpForm" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Student Name</label>
-                        <input type="text" id="studentUsername" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Choose your warrior name">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                        <input type="email" id="studentEmail" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="student@school.edu">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
-                        <input type="password" id="studentPassword" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Create a strong password" oninput="checkPasswordStrength('student')">
-                        <div class="mt-2">
-                            <div class="text-xs text-gray-600 dark:text-gray-400 mb-2">Password must include:</div>
-                            <div class="grid grid-cols-2 gap-1 text-xs">
-                                <div id="studentReq1" class="flex items-center text-gray-500">
-                                    <span class="mr-1">○</span> 8+ characters
-                                </div>
-                                <div id="studentReq2" class="flex items-center text-gray-500">
-                                    <span class="mr-1">○</span> Uppercase letter
-                                </div>
-                                <div id="studentReq3" class="flex items-center text-gray-500">
-                                    <span class="mr-1">○</span> Lowercase letter
-                                </div>
-                                <div id="studentReq4" class="flex items-center text-gray-500">
-                                    <span class="mr-1">○</span> Number
-                                </div>
-                            </div>
+                <div id="studentSignUpForm" class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Student Name</label>
+                            <input type="text" id="studentUsername" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Choose your warrior name">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                            <input type="email" id="studentEmail" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="student@school.edu">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Grade Level</label>
+                            <select id="studentGrade" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                                <option value="">Select your grade</option>
+                                <option value="6">6th Grade</option>
+                                <option value="7">7th Grade</option>
+                                <option value="8">8th Grade</option>
+                                <option value="9">9th Grade</option>
+                                <option value="10">10th Grade</option>
+                                <option value="11">11th Grade</option>
+                                <option value="12">12th Grade</option>
+                            </select>
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
-                        <input type="password" id="studentConfirmPassword" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Re-enter your password" oninput="checkPasswordMatch('student')">
-                        <div id="studentPasswordMatch" class="mt-1 text-xs hidden"></div>
-                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                            <input type="password" id="studentPassword" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Create a strong password" oninput="checkPasswordStrength('student')">
+                            <div class="mt-2">
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mb-2">Password must include:</div>
+                                <div class="grid grid-cols-2 gap-1 text-xs">
+                                    <div id="studentReq1" class="flex items-center text-gray-500">
+                                        <span class="mr-1">○</span> 8+ characters
+                                    </div>
+                                    <div id="studentReq2" class="flex items-center text-gray-500">
+                                        <span class="mr-1">○</span> Uppercase letter
+                                    </div>
+                                    <div id="studentReq3" class="flex items-center text-gray-500">
+                                        <span class="mr-1">○</span> Lowercase letter
+                                    </div>
+                                    <div id="studentReq4" class="flex items-center text-gray-500">
+                                        <span class="mr-1">○</span> Number
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Grade Level</label>
-                        <select id="studentGrade" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                            <option value="">Select your grade</option>
-                            <option value="6">6th Grade</option>
-                            <option value="7">7th Grade</option>
-                            <option value="8">8th Grade</option>
-                            <option value="9">9th Grade</option>
-                            <option value="10">10th Grade</option>
-                            <option value="11">11th Grade</option>
-                            <option value="12">12th Grade</option>
-                        </select>
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
+                            <input type="password" id="studentConfirmPassword" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Re-enter your password" oninput="checkPasswordMatch('student')">
+                            <div id="studentPasswordMatch" class="mt-1 text-xs hidden"></div>
+                        </div>
 
-                    <button onclick="signUpStudentUpdated()" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium text-base">
-                        Start My Battle Journey! ⚔️
-                    </button>
-                    
-                    <div class="text-center text-sm text-gray-500 dark:text-gray-400">
-                        Join the fight against procrastination!
+                        <button onclick="signUpStudentUpdated()" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium text-base">
+                            Start My Battle Journey! ⚔️
+                        </button>
+                        
+                        <div class="text-center text-sm text-gray-500 dark:text-gray-400">
+                            Join the fight against procrastination!
+                        </div>
                     </div>
                 </div>
 
                 <!-- Teacher Sign Up Form -->
-                <div id="teacherSignUpForm" class="space-y-4 hidden">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Teacher Name</label>
-                        <input type="text" id="teacherUsername" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Ms. Johnson">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">School Email</label>
-                        <input type="email" id="teacherEmail" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="teacher@school.edu">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
-                        <input type="password" id="teacherPassword" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Create a secure password" oninput="checkPasswordStrength('teacher')">
-                        <div class="mt-2">
-                            <div class="text-xs text-gray-600 dark:text-gray-400 mb-2">Password must include:</div>
-                            <div class="grid grid-cols-2 gap-1 text-xs">
-                                <div id="teacherReq1" class="flex items-center text-gray-500">
-                                    <span class="mr-1">○</span> 8+ characters
-                                </div>
-                                <div id="teacherReq2" class="flex items-center text-gray-500">
-                                    <span class="mr-1">○</span> Uppercase letter
-                                </div>
-                                <div id="teacherReq3" class="flex items-center text-gray-500">
-                                    <span class="mr-1">○</span> Lowercase letter
-                                </div>
-                                <div id="teacherReq4" class="flex items-center text-gray-500">
-                                    <span class="mr-1">○</span> Number
-                                </div>
-                            </div>
+                <div id="teacherSignUpForm" class="grid md:grid-cols-2 gap-6 hidden">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Teacher Name</label>
+                            <input type="text" id="teacherUsername" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Ms. Johnson">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">School Email</label>
+                            <input type="email" id="teacherEmail" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="teacher@school.edu">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject Area</label>
+                            <select id="teacherSubject" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                                <option value="">Select your primary subject</option>
+                                <option value="math">Mathematics</option>
+                                <option value="science">Science</option>
+                                <option value="english">English/Language Arts</option>
+                                <option value="history">History/Social Studies</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">School Name</label>
+                            <input type="text" id="schoolName" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Washington High School">
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
-                        <input type="password" id="teacherConfirmPassword" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Re-enter your password" oninput="checkPasswordMatch('teacher')">
-                        <div id="teacherPasswordMatch" class="mt-1 text-xs hidden"></div>
-                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                            <input type="password" id="teacherPassword" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Create a secure password" oninput="checkPasswordStrength('teacher')">
+                            <div class="mt-2">
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mb-2">Password must include:</div>
+                                <div class="grid grid-cols-2 gap-1 text-xs">
+                                    <div id="teacherReq1" class="flex items-center text-gray-500">
+                                        <span class="mr-1">○</span> 8+ characters
+                                    </div>
+                                    <div id="teacherReq2" class="flex items-center text-gray-500">
+                                        <span class="mr-1">○</span> Uppercase letter
+                                    </div>
+                                    <div id="teacherReq3" class="flex items-center text-gray-500">
+                                        <span class="mr-1">○</span> Lowercase letter
+                                    </div>
+                                    <div id="teacherReq4" class="flex items-center text-gray-500">
+                                        <span class="mr-1">○</span> Number
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject Area</label>
-                        <select id="teacherSubject" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                            <option value="">Select your primary subject</option>
-                            <option value="math">Mathematics</option>
-                            <option value="science">Science</option>
-                            <option value="english">English/Language Arts</option>
-                            <option value="history">History/Social Studies</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
+                            <input type="password" id="teacherConfirmPassword" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Re-enter your password" oninput="checkPasswordMatch('teacher')">
+                            <div id="teacherPasswordMatch" class="mt-1 text-xs hidden"></div>
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">School Name</label>
-                        <input type="text" id="schoolName" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Washington High School">
-                    </div>
-
-                    <button onclick="signUpTeacherUpdated()" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium text-base">
-                        Create Teacher Account 👩‍🏫
-                    </button>
-                    
-                    <div class="text-center text-sm text-gray-500 dark:text-gray-400">
-                        Gamify your classroom assignments!
+                        <button onclick="signUpTeacherUpdated()" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium text-base">
+                            Create Teacher Account 👩‍🏫
+                        </button>
+                        
+                        <div class="text-center text-sm text-gray-500 dark:text-gray-400">
+                            Gamify your classroom assignments!
+                        </div>
                     </div>
                 </div>
 
+
+            </div>
+
+            <!-- Demo & Pricing Section - Outside the main card -->
+            <div class="grid md:grid-cols-2 gap-4">
                 <!-- Demo Section -->
-                <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
+                <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg p-6">
                     <div class="text-center mb-4">
                         <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Try Demo Mode</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">Experience both student and teacher views</p>
@@ -224,7 +238,7 @@
                     
                     <div class="grid grid-cols-2 gap-3">
                         <button onclick="enterStudentDemo()" class="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                            🎮 Student Demo
+                            👨‍🎓 Student Demo
                         </button>
                         <button onclick="enterTeacherDemo()" class="bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium text-sm">
                             👩‍🏫 Teacher Demo
@@ -236,13 +250,40 @@
                     </div>
                 </div>
 
-                <!-- Company Branding -->
-                <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
-                    <div class="flex items-center justify-center space-x-3">
-                        <img src="https://pfst.cf2.poecdn.net/base/image/be94ad793df5c5fef6abb3606c29b6e8f15daaa53635ceb2e12adf1f3817c520?w=1080&h=1080" alt="Cortexo Logo" class="w-8 h-8 rounded-lg">
-                        <div class="text-center">
-                            <div class="text-sm font-semibold text-gray-700 dark:text-gray-300">Powered by Cortexo</div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400">Where Education Meets Adventure</div>
+                <!-- Pricing Section -->
+                <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg p-6">
+                    <div class="text-center mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">View Plans</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Choose your adventure level</p>
+                    </div>
+                    
+                    <button onclick="openSubscriptionModal()" class="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white py-3 rounded-lg hover:from-green-700 hover:to-blue-700 transition-all font-medium text-sm">
+                        💰 View Pricing Plans
+                    </button>
+                    
+                    <div class="mt-3 text-xs text-center text-gray-400 dark:text-gray-500">
+                        Free plan available
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landing Page Footer -->
+            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                        <img src="https://pfst.cf2.poecdn.net/base/image/be94ad793df5c5fef6abb3606c29b6e8f15daaa53635ceb2e12adf1f3817c520?w=1080&h=1080" alt="Cortexo Logo" class="w-12 h-12 rounded-lg">
+                        <div>
+                            <div class="text-lg font-bold text-gray-800 dark:text-gray-200">Cortexo</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Where Education Meets Adventure</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center md:text-right">
+                        <div class="text-sm text-gray-600 dark:text-gray-400">
+                            © 2025 Cortexo. All rights reserved.
+                        </div>
+                        <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                            Transforming learning into epic adventures
                         </div>
                     </div>
                 </div>
@@ -259,37 +300,39 @@
     <!-- Header -->
     <header class="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-6xl mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <img src="https://pfst.cf2.poecdn.net/base/image/78cbf24847b03e978c1f5b6aeb4e2a7ba1590d18c5e41634066db8a1d872e68a?w=1080&h=1080" alt="Rival You Logo" class="w-8 h-8 rounded-lg">
-                    <h1 class="text-2xl font-bold text-primary">Rival You</h1>
+            <div class="flex items-center justify-between min-h-[48px]">
+                <div class="flex items-center space-x-3 min-w-0">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/ed436c7c96d0905072d34a73e8e5b41a0a3239416d72b91a324dbb1edac1a848?w=2206&h=527" alt="Rival You Logo" class="h-10 w-auto rounded-lg flex-shrink-0">
                 </div>
-                <div class="flex items-center space-x-4">
-                    <div class="flex items-center space-x-2">
-                        <span id="userWelcome" class="text-sm text-gray-600 dark:text-gray-400 hidden">Welcome, <span id="displayUsername" class="font-semibold"></span>!</span>
+                <div class="flex items-center space-x-2 md:space-x-4 min-w-0">
+                    <div class="flex items-center space-x-2 min-w-0">
+                        <span id="userWelcome" class="text-sm text-gray-600 dark:text-gray-400 hidden truncate">Welcome, <span id="displayUsername" class="font-semibold"></span>!</span>
                     </div>
                     
                     <!-- Back to Sign Up Button (for demo users) -->
-                    <button id="backToSignUpBtn" onclick="showWelcomeScreen()" class="hidden flex items-center space-x-2 bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors font-medium">
-                        <span>← Back to Sign Up</span>
+                    <button id="backToSignUpBtn" onclick="showWelcomeScreen()" class="hidden flex items-center space-x-1 md:space-x-2 bg-blue-600 text-white hover:bg-blue-700 px-2 md:px-4 py-2 rounded-lg transition-colors font-medium text-sm whitespace-nowrap">
+                        <span class="hidden md:inline">← Back to Sign Up</span>
+                        <span class="md:hidden">← Sign Up</span>
                     </button>
                     
-                    <button onclick="openAvatarSelection()" class="flex items-center space-x-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg transition-colors">
-                        <div id="headerAvatar" class="text-lg">🧠</div>
-                        <span class="text-sm font-medium">Avatar</span>
+                    <button onclick="openAvatarSelection()" class="flex items-center space-x-1 md:space-x-2 bg-gray-600 text-white hover:bg-gray-700 px-2 md:px-4 py-2 rounded-lg transition-colors font-medium text-sm whitespace-nowrap">
+                        <div id="headerAvatar" class="text-sm">🧠</div>
+                        <span class="hidden md:inline">Avatar</span>
                     </button>
                     
                     <!-- Teacher Mode Toggle -->
-                    <button id="teacherModeBtn" onclick="toggleTeacherMode()" class="hidden flex items-center space-x-2 bg-purple-100 dark:bg-purple-900/30 hover:bg-purple-200 dark:hover:bg-purple-900/50 px-3 py-2 rounded-lg transition-colors text-sm text-purple-700 dark:text-purple-300">
-                        <span>👩‍🏫 Teacher Mode</span>
+                    <button id="teacherModeBtn" onclick="toggleTeacherMode()" class="hidden flex items-center space-x-1 md:space-x-2 bg-purple-600 text-white hover:bg-purple-700 px-2 md:px-4 py-2 rounded-lg transition-colors font-medium text-sm whitespace-nowrap">
+                        <span class="hidden md:inline">👩‍🏫 Teacher Mode</span>
+                        <span class="md:hidden">👩‍🏫</span>
                     </button>
                     
-                    <div class="text-sm text-gray-600 dark:text-gray-400">
+                    <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
                         Week <span id="currentWeek" class="font-semibold">1</span>
                     </div>
-                    <div class="text-sm">
-                        <span class="text-gray-600 dark:text-gray-400">Next Battle:</span>
-                        <span id="battleCountdown" class="font-semibold text-primary">5d 12h</span>
+                    <div class="text-xs md:text-sm whitespace-nowrap">
+                        <span class="text-gray-600 dark:text-gray-400 hidden md:inline">Next Battle:</span>
+                        <span class="text-gray-600 dark:text-gray-400 md:hidden">Battle:</span>
+                        <span id="battleCountdown" class="font-semibold text-primary ml-1">5d 12h</span>
                     </div>
                 </div>
             </div>
@@ -886,6 +929,213 @@
                 <div class="mt-8 text-center">
                     <button onclick="closeAssignmentDetails()" class="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
                         Close Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscription Modal -->
+    <div id="subscriptionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-8">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🚀</div>
+                    <h2 class="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Welcome to Rival You!</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Choose your plan to unlock the full battle experience</p>
+                </div>
+
+                <!-- Pricing Cards -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <!-- Bronze Bow - Free Tier -->
+                    <div class="border-2 border-gray-200 dark:border-gray-600 rounded-xl p-6 relative">
+                        <div class="text-center mb-6">
+                            <div class="text-3xl mb-2">🏹</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Bronze Bow</h3>
+                            <div class="text-3xl font-bold text-gray-600 dark:text-gray-400 mb-2">Free</div>
+                            <div class="text-sm text-gray-500">Individual students</div>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-6 text-xs">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>3 battles per day</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Basic avatar customization</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>XP tracking & levels</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Practice quizzes</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <span class="text-gray-400 mr-2">✗</span>
+                                <span>Limited AI support</span>
+                            </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('bronze')" class="w-full bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium">
+                            Continue Free
+                        </button>
+                    </div>
+
+                    <!-- Squad Sync - Group Tier -->
+                    <div class="border-2 border-blue-200 dark:border-blue-600 rounded-xl p-6 relative">
+                        <div class="text-center mb-6">
+                            <div class="text-3xl mb-2">👥</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Squad Sync</h3>
+                            <div class="text-3xl font-bold text-blue-600 mb-2">$9 USD</div>
+                            <div class="text-sm text-gray-500">per user/month</div>
+                            <div class="text-xs text-blue-600 mt-1">Up to 4 students max</div>
+                            <div class="text-xs text-gray-400 mt-1">($36/month for full squad)</div>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-6 text-xs">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span><strong>Unlimited battles</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span><strong>AI study insights & tips</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Group collaboration</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Shared quizzes</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Group leaderboards</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Everything in Bronze Bow</span>
+                            </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('squad')" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                            Start 14-Day Trial
+                        </button>
+                    </div>
+
+                    <!-- Silver Sword - Professional Tier (Highlighted) -->
+                    <div class="border-2 border-primary rounded-xl p-6 relative bg-gradient-to-br from-primary/5 to-purple-100 dark:to-purple-900/20">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">Most Popular</span>
+                        </div>
+                        
+                        <div class="text-center mb-6">
+                            <div class="text-3xl mb-2">⚔️</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Silver Sword</h3>
+                            <div class="text-3xl font-bold text-primary mb-2">$99 USD</div>
+                            <div class="text-sm text-gray-500">per teacher/month</div>
+                            <div class="text-xs text-primary mt-1">Verified educators only</div>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-6 text-xs">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span><strong>Full AI question generation</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Advanced analytics dashboard</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Student progress tracking</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span><strong>Students get full access FREE</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Up to 30 students included</span>
+                            </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('silver')" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium">
+                            Start 30-Day Trial
+                        </button>
+                    </div>
+
+                    <!-- Golden Gauntlet - Enterprise Tier -->
+                    <div class="border-2 border-yellow-400 dark:border-yellow-500 rounded-xl p-6 relative bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20">
+                        <div class="text-center mb-6">
+                            <div class="text-3xl mb-2">👑</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Golden Gauntlet</h3>
+                            <div class="text-2xl font-bold text-yellow-600 mb-2">$1,299+ USD</div>
+                            <div class="text-sm text-gray-500">per school/month</div>
+                            <div class="text-xs text-yellow-600 mt-1">Schools & districts</div>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-6 text-xs">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span><strong>Everything in Silver Sword</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Dedicated onboarding</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>LMS integrations</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Priority support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Unlimited teachers & students</span>
+                            </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('golden')" class="w-full bg-yellow-600 text-white py-3 rounded-lg hover:bg-yellow-700 transition-colors font-medium">
+                            Contact Sales
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Features Comparison -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
+                    <h4 class="text-lg font-bold text-center mb-4">Why Upgrade?</h4>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div>
+                            <div class="text-3xl mb-2">🤖</div>
+                            <h5 class="font-semibold mb-2">AI-Powered Learning</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Personalized insights and adaptive difficulty based on your performance</p>
+                        </div>
+                        <div>
+                            <div class="text-3xl mb-2">⚔️</div>
+                            <h5 class="font-semibold mb-2">Unlimited Battles</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Practice as much as you want without daily limits</p>
+                        </div>
+                        <div>
+                            <div class="text-3xl mb-2">📊</div>
+                            <h5 class="font-semibold mb-2">Advanced Analytics</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Detailed progress tracking and performance insights</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        ✨ All plans include: End-to-end encryption, Cancel anytime, Student privacy protection
+                    </p>
+                    <button onclick="closeSubscriptionModal()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-sm underline">
+                        I'll decide later
                     </button>
                 </div>
             </div>
@@ -2401,9 +2651,11 @@
                 <header class="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700">
                     <div class="max-w-6xl mx-auto px-4 py-4">
                         <div class="flex items-center justify-between">
-                            <h1 class="text-2xl font-bold text-purple-600">👩‍🏫 Teacher Dashboard - Rival You</h1>
+                            <div class="flex items-center space-x-3">
+                                <img src="https://pfst.cf2.poecdn.net/base/image/ed436c7c96d0905072d34a73e8e5b41a0a3239416d72b91a324dbb1edac1a848?w=2206&h=527" alt="Rival You Logo" class="h-10 w-auto rounded-lg">
+                            </div>
                             <div class="flex items-center space-x-4">
-                                <span class="text-sm text-gray-600 dark:text-gray-400">Welcome, Teacher Demo!</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Welcome, Demo Teacher!</span>
                                 <button onclick="toggleTeacherMode()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-medium">
                                     👨‍🎓 Student Mode
                                 </button>
@@ -3153,7 +3405,7 @@ Provide ONLY raw JSON in your response with no explanations, additional text, or
             }
         }
 
-        // Updated sign up functions to check password confirmation
+        // Updated sign up functions to check password confirmation and show subscription modal
         function signUpStudentUpdated() {
             const username = document.getElementById('studentUsername').value.trim();
             const email = document.getElementById('studentEmail').value.trim();
@@ -3194,12 +3446,17 @@ Provide ONLY raw JSON in your response with no explanations, additional text, or
             appState.email = email;
             appState.userDetails = { grade: grade };
 
-            // Hide welcome screen and show student interface (no demo buttons for signed up users)
+            // Hide welcome screen
             document.getElementById('welcomeScreen').classList.add('hidden');
-            document.getElementById('userWelcome').classList.remove('hidden');
-            document.getElementById('displayUsername').textContent = username;
-
-            showCustomAlert(`🎮 Welcome to the battle, ${username}! Your rival awaits... ⚔️`);
+            
+            // Show subscription modal first
+            openSubscriptionModal();
+            
+            // After subscription selection, show the main interface
+            setTimeout(() => {
+                document.getElementById('userWelcome').classList.remove('hidden');
+                document.getElementById('displayUsername').textContent = username;
+            }, 500);
         }
 
         function signUpTeacherUpdated() {
@@ -3235,7 +3492,7 @@ Provide ONLY raw JSON in your response with no explanations, additional text, or
                 return;
             }
 
-            // Set user as teacher and go directly to teacher dashboard
+            // Set user as teacher
             appState.isSignedUp = true;
             appState.isDemoMode = false;
             appState.userRole = 'teacher';
@@ -3243,13 +3500,16 @@ Provide ONLY raw JSON in your response with no explanations, additional text, or
             appState.email = email;
             appState.userDetails = { subject: subject, school: school };
 
-            // Hide welcome screen and show teacher dashboard (no demo buttons for signed up users)
+            // Hide welcome screen
             document.getElementById('welcomeScreen').classList.add('hidden');
             
-            // Show teacher dashboard directly
-            showTeacherDashboard();
+            // Show subscription modal first
+            openSubscriptionModal();
             
-            showCustomAlert(`👩‍🏫 Welcome to Rival You, ${username}! Ready to gamify your classroom? 🏫`);
+            // After subscription, show teacher dashboard or main interface
+            setTimeout(() => {
+                showTeacherDashboard();
+            }, 1000);
         }
 
         // Assignment details data
@@ -3675,6 +3935,56 @@ Provide ONLY raw JSON in your response with no explanations, additional text, or
         function closeTeacherAssignmentDetails() {
             document.getElementById('teacherAssignmentDetailsModal').classList.add('hidden');
         }
+
+        // Subscription modal functions
+        function openSubscriptionModal() {
+            document.getElementById('subscriptionModal').classList.remove('hidden');
+        }
+
+        function closeSubscriptionModal() {
+            document.getElementById('subscriptionModal').classList.add('hidden');
+        }
+
+        function selectPlan(planType) {
+            if (planType === 'free') {
+                // Continue with free plan
+                closeSubscriptionModal();
+                showCustomAlert('🎮 Welcome to Rival You! You can upgrade anytime to unlock more features.');
+            } else if (planType === 'premium') {
+                // Show premium subscription flow
+                handlePremiumSubscription();
+            } else if (planType === 'teacher') {
+                // Show teacher subscription flow
+                handleTeacherSubscription();
+            }
+        }
+
+        function handlePremiumSubscription() {
+            // In a real app, this would integrate with Stripe/PayPal/etc.
+            showCustomAlert('🚀 Premium subscription would normally redirect to payment processor (Stripe, PayPal, etc.)');
+            closeSubscriptionModal();
+            
+            // For demo, simulate successful subscription
+            setTimeout(() => {
+                showCustomAlert('🎉 Welcome to Premium! You now have unlimited battles and AI insights!');
+                appState.subscriptionTier = 'premium';
+            }, 2000);
+        }
+
+        function handleTeacherSubscription() {
+            // In a real app, this would integrate with payment processor
+            showCustomAlert('👩‍🏫 Teacher subscription would normally redirect to payment processor with school billing options.');
+            closeSubscriptionModal();
+            
+            // For demo, simulate successful subscription
+            setTimeout(() => {
+                showCustomAlert('🎓 Welcome to Classroom Hero! You can now create unlimited AI-powered assignments!');
+                appState.subscriptionTier = 'teacher';
+            }, 2000);
+        }
+
+        // Add subscription tier to app state
+        appState.subscriptionTier = 'free'; // 'free', 'premium', 'teacher'
 
         // Initialize
         updatePowerLevels();
