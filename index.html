@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RivalYou by Cortexo</title>
+    <title>Rival You - AI Learning Twin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -72,7 +72,7 @@
             <!-- Main Sign Up Card -->
             <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 animate-slide-up mb-6">
                 <div class="text-center mb-6">
-                    <img src="https://pfst.cf2.poecdn.net/base/image/6b7d23306073ec0d9f4f85294cc44b0683deebc2eaf7a4f2e055473f13f52033?w=1080&h=1080" alt="Rival You Logo" class="w-32 h-32 mx-auto mb-4 rounded-2xl shadow-lg">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/4cdbaf898bfd7432fcfe4133b155ec1d2140d7ce4b2cadd9a4468471170b1391?w=1080&h=1080" alt="Rival You Logo" class="w-32 h-32 mx-auto mb-4 rounded-2xl shadow-lg">
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Welcome to Rival You</h1>
                     <p class="text-gray-600 dark:text-gray-400 mt-2">Turn learning into an epic battle!</p>
                 </div>
@@ -302,7 +302,7 @@
         <div class="max-w-6xl mx-auto px-4 py-4">
             <div class="flex items-center justify-between min-h-[48px]">
                 <div class="flex items-center space-x-3 min-w-0">
-                    <img src="https://pfst.cf2.poecdn.net/base/image/ed436c7c96d0905072d34a73e8e5b41a0a3239416d72b91a324dbb1edac1a848?w=2206&h=527" alt="Rival You Logo" class="h-10 w-auto rounded-lg flex-shrink-0">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/d8a0c0161f0dc8666c5197238093e8d8c7a3a51380a4b3b77a77a94a34f8628a?w=2191&h=634" alt="Rival You Logo" class="h-10 w-auto rounded-lg flex-shrink-0">
                 </div>
                 <div class="flex items-center space-x-2 md:space-x-4 min-w-0">
                     <div class="flex items-center space-x-2 min-w-0">
@@ -343,9 +343,22 @@
         <!-- Battle Arena -->
         <div class="battle-arena rounded-2xl p-8 text-white relative overflow-hidden">
             <div class="glass-effect rounded-xl p-6">
-                <h2 class="text-3xl font-bold text-center mb-8">⚔️ Battle Arena</h2>
+                <h2 class="text-3xl font-bold text-center mb-6">⚔️ Battle Arena</h2>
                 
-                <div class="grid md:grid-cols-3 gap-8 items-center">
+                <!-- Battle Mode Selection -->
+                <div class="flex justify-center mb-8">
+                    <div class="bg-white/20 rounded-lg p-2 flex space-x-2">
+                        <button onclick="switchBattleMode('bot')" id="botModeBtn" class="px-4 py-2 rounded-md bg-white/30 text-white font-medium transition-all">
+                            🤖 VS AI Rival
+                        </button>
+                        <button onclick="switchBattleMode('classmates')" id="classmatesModeBtn" class="px-4 py-2 rounded-md text-white/70 hover:bg-white/20 font-medium transition-all">
+                            👥 VS Classmates
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- AI Rival Battle View -->
+                <div id="botBattleView" class="grid md:grid-cols-3 gap-8 items-center">
                     <!-- Student Side -->
                     <div class="text-center space-y-4">
                         <div class="relative">
@@ -401,6 +414,111 @@
                         </div>
                         <div class="text-sm opacity-90">
                             Status: <span id="rivalStatus" class="font-semibold text-orange-300">Weakening... 😰</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Classmates Battle View -->
+                <div id="classmatesBattleView" class="hidden">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">🏆 Class Leaderboard</h3>
+                        <p class="text-white/80">Challenge your classmates to epic study battles!</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Top 3 Students -->
+                        <div class="bg-white/20 rounded-lg p-4">
+                            <div class="text-center">
+                                <div class="text-6xl mb-2">🥇</div>
+                                <div class="text-lg font-bold text-yellow-300">Alex Johnson</div>
+                                <div class="text-sm opacity-80">Level 6 • 1,420 XP</div>
+                                <div class="text-xs text-yellow-200 mt-1">Brain Champion</div>
+                                <button onclick="challengeClassmate('Alex Johnson', '🧠', 6)" class="mt-3 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition-colors text-sm">
+                                    ⚔️ Challenge
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/20 rounded-lg p-4">
+                            <div class="text-center">
+                                <div class="text-6xl mb-2">🥈</div>
+                                <div class="text-lg font-bold text-gray-300">Demo Student</div>
+                                <div class="text-sm opacity-80">Level 5 • 1,250 XP</div>
+                                <div class="text-xs text-blue-200 mt-1">Academic Fighter</div>
+                                <div class="mt-3 bg-blue-500 text-white px-4 py-2 rounded text-sm">
+                                    👑 You
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/20 rounded-lg p-4">
+                            <div class="text-center">
+                                <div class="text-6xl mb-2">🥉</div>
+                                <div class="text-lg font-bold text-orange-300">Emma Davis</div>
+                                <div class="text-sm opacity-80">Level 5 • 1,180 XP</div>
+                                <div class="text-xs text-blue-200 mt-1">Academic Fighter</div>
+                                <button onclick="challengeClassmate('Emma Davis', '😎', 5)" class="mt-3 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition-colors text-sm">
+                                    ⚔️ Challenge
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Classmates -->
+                    <div class="mt-6 bg-white/10 rounded-lg p-4">
+                        <h4 class="text-lg font-semibold text-white mb-4">Other Classmates</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="flex items-center justify-between bg-white/10 rounded p-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🤓</span>
+                                    <div>
+                                        <div class="font-medium text-white">Michael Chen</div>
+                                        <div class="text-xs text-white/70">Level 3 • 520 XP</div>
+                                    </div>
+                                </div>
+                                <button onclick="challengeClassmate('Michael Chen', '🤓', 3)" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition-colors text-sm">
+                                    Challenge
+                                </button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between bg-white/10 rounded p-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🌟</span>
+                                    <div>
+                                        <div class="font-medium text-white">Sarah Wilson</div>
+                                        <div class="text-xs text-white/70">Level 4 • 750 XP</div>
+                                    </div>
+                                </div>
+                                <button onclick="challengeClassmate('Sarah Wilson', '🌟', 4)" class="bg-purple-500 text-white px-3 py-1 rounded hover:bg-purple-600 transition-colors text-sm">
+                                    Challenge
+                                </button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between bg-white/10 rounded p-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🦅</span>
+                                    <div>
+                                        <div class="font-medium text-white">David Lopez</div>
+                                        <div class="text-xs text-white/70">Level 2 • 280 XP</div>
+                                    </div>
+                                </div>
+                                <button onclick="challengeClassmate('David Lopez', '🦅', 2)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition-colors text-sm">
+                                    Challenge
+                                </button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between bg-white/10 rounded p-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">⚡</span>
+                                    <div>
+                                        <div class="font-medium text-white">Lisa Park</div>
+                                        <div class="text-xs text-white/70">Level 4 • 890 XP</div>
+                                    </div>
+                                </div>
+                                <button onclick="challengeClassmate('Lisa Park', '⚡', 4)" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition-colors text-sm">
+                                    Challenge
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -523,9 +641,7 @@
                     </div>
                 </div>
 
-                <button onclick="generateCustomQuiz()" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium">
-                    🎯 Generate Custom Quiz
-                </button>
+
             </div>
 
             <!-- Learning Tips & Insights -->
@@ -565,6 +681,19 @@
                             <li>• Use visual diagrams for word problems</li>
                         </ul>
                     </div>
+                </div>
+
+                <!-- AI Tutor Chat -->
+                <div class="mb-6">
+                    <button onclick="openAITutorChat()" id="rhinoChatButton" class="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white p-4 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        <div class="flex items-center justify-center space-x-3">
+                            <span class="text-2xl">🦏</span>
+                            <div class="text-left">
+                                <div class="font-bold">Chat with Rhino</div>
+                                <div class="text-sm opacity-90">Ask questions, get help instantly!</div>
+                            </div>
+                        </div>
+                    </button>
                 </div>
 
                 <!-- Progress Stats -->
@@ -937,7 +1066,7 @@
 
     <!-- Subscription Modal -->
     <div id="subscriptionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-7xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="p-8">
                 <div class="text-center mb-8">
                     <div class="text-6xl mb-4">🚀</div>
@@ -946,88 +1075,94 @@
                 </div>
 
                 <!-- Pricing Cards -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 items-stretch">
-                    <!-- Bronze Bow - Free Tier -->
-                    <div class="border-2 border-gray-200 dark:border-gray-600 rounded-xl p-6 relative flex flex-col">
+                <div class="grid grid-cols-5 gap-6 mb-8 items-stretch">
+                    <!-- Teacher Free - Always Free -->
+                    <div class="border-2 border-green-200 dark:border-green-600 rounded-xl p-6 relative bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 flex flex-col">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">Always Free</span>
+                        </div>
+                        
                         <div class="text-center mb-6">
-                            <div class="text-3xl mb-2">🏹</div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Bronze Bow</h3>
-                            <div class="text-3xl font-bold text-gray-600 dark:text-gray-400 mb-2">Free</div>
-                            <div class="text-sm text-gray-500">Individual students</div>
+                            <div class="text-3xl mb-2">👩‍🏫</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Teacher</h3>
+                            <div class="text-3xl font-bold text-green-600 mb-2">$0</div>
+                            <div class="text-sm text-gray-500">Forever free for educators</div>
                         </div>
                         
                         <ul class="space-y-3 mb-6 text-xs flex-grow">
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>3 battles per day</span>
+                                <span>Create unlimited assignments</span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>Basic avatar customization</span>
+                                <span>AI question generation</span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>XP tracking & levels</span>
+                                <span>Class management dashboard</span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>Practice quizzes</span>
+                                <span>Student progress analytics</span>
                             </li>
-                            <li class="flex items-center text-gray-400">
-                                <span class="text-gray-400 mr-2">✗</span>
-                                <span>Limited AI support</span>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Battle assignment creation</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Priority support</span>
                             </li>
                         </ul>
                         
-                        <button onclick="selectPlan('bronze')" class="w-full bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium">
+                        <button onclick="selectPlan('teacher')" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium">
+                            Get Started Free
+                        </button>
+                    </div>
+
+                    <!-- Student Free Tier -->
+                    <div class="border-2 border-gray-200 dark:border-gray-600 rounded-xl p-6 relative flex flex-col">
+                        <div class="text-center mb-6">
+                            <div class="text-3xl mb-2">🏹</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Student Free</h3>
+                            <div class="text-3xl font-bold text-gray-600 dark:text-gray-400 mb-2">$0</div>
+                            <div class="text-sm text-gray-500">Basic battle access</div>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-6 text-xs flex-grow">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Join classes</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>3 practice battles per day</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Basic XP tracking</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Simple avatar selection</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <span class="text-gray-400 mr-2">✗</span>
+                                <span>Limited AI insights</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <span class="text-gray-400 mr-2">✗</span>
+                                <span>Rival battles blurred</span>
+                            </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('student-free')" class="w-full bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium">
                             Continue Free
                         </button>
                     </div>
 
-                    <!-- Squad Sync - Group Tier -->
-                    <div class="border-2 border-blue-200 dark:border-blue-600 rounded-xl p-6 relative flex flex-col">
-                        <div class="text-center mb-6">
-                            <div class="text-3xl mb-2">👥</div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Squad Sync</h3>
-                            <div class="text-3xl font-bold text-blue-600 mb-2">$9 USD</div>
-                            <div class="text-sm text-gray-500">per user/month</div>
-                            <div class="text-xs text-blue-600 mt-1">Up to 4 students max</div>
-                            <div class="text-xs text-gray-400 mt-1">($36/month for full squad)</div>
-                        </div>
-                        
-                        <ul class="space-y-3 mb-6 text-xs flex-grow">
-                            <li class="flex items-center">
-                                <span class="text-green-500 mr-2">✓</span>
-                                <span><strong>Unlimited battles</strong></span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-green-500 mr-2">✓</span>
-                                <span><strong>AI study insights & tips</strong></span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-green-500 mr-2">✓</span>
-                                <span>Group collaboration</span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-green-500 mr-2">✓</span>
-                                <span>Shared quizzes</span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-green-500 mr-2">✓</span>
-                                <span>Group leaderboards</span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-green-500 mr-2">✓</span>
-                                <span>Everything in Bronze Bow</span>
-                            </li>
-                        </ul>
-                        
-                        <button onclick="selectPlan('squad')" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                            Start 14-Day Trial
-                        </button>
-                    </div>
-
-                    <!-- Silver Sword - Professional Tier (Highlighted) -->
+                    <!-- Student Premium - Most Popular -->
                     <div class="border-2 border-primary rounded-xl p-6 relative bg-gradient-to-br from-primary/5 to-purple-100 dark:to-purple-900/20 flex flex-col">
                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">Most Popular</span>
@@ -1035,76 +1170,140 @@
                         
                         <div class="text-center mb-6">
                             <div class="text-3xl mb-2">⚔️</div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Silver Sword</h3>
-                            <div class="text-3xl font-bold text-primary mb-2">$99 USD</div>
-                            <div class="text-sm text-gray-500">per teacher/month</div>
-                            <div class="text-xs text-primary mt-1">Verified educators only</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Student Premium</h3>
+                            <div class="text-3xl font-bold text-primary mb-2">$9.99</div>
+                            <div class="text-sm text-gray-500">per student/month</div>
+                            <div class="text-xs text-primary mt-1">Full battle experience</div>
                         </div>
                         
                         <ul class="space-y-3 mb-6 text-xs flex-grow">
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span><strong>Full AI question generation</strong></span>
+                                <span><strong>Unlimited battles & practice</strong></span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>Advanced analytics dashboard</span>
+                                <span><strong>Full AI coach & insights</strong></span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>Student progress tracking</span>
+                                <span>Complete rival battle system</span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span><strong>Students get full access FREE</strong></span>
+                                <span>Classmate vs classmate battles</span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>Up to 30 students included</span>
+                                <span>Advanced performance analytics</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Priority learning tips</span>
                             </li>
                         </ul>
                         
-                        <button onclick="selectPlan('silver')" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium">
-                            Start 30-Day Trial
+                        <button onclick="selectPlan('student-premium')" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium">
+                            Start 14-Day Trial
                         </button>
                     </div>
 
-                    <!-- Golden Gauntlet - Enterprise Tier -->
+                    <!-- Student Annual - Best Value -->
                     <div class="border-2 border-yellow-400 dark:border-yellow-500 rounded-xl p-6 relative bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 flex flex-col">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">Best Value</span>
+                        </div>
+                        
                         <div class="text-center mb-6">
-                            <div class="text-3xl mb-2">👑</div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Golden Gauntlet</h3>
-                            <div class="text-3xl font-bold text-yellow-600 mb-2">$599</div>
-                            <div class="text-sm text-gray-500">per school/month</div>
-                            <div class="text-xs text-yellow-600 mt-1">Medium schools</div>
+                            <div class="text-3xl mb-2">🏆</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Student Annual</h3>
+                            <div class="text-3xl font-bold text-yellow-600 mb-2">$99</div>
+                            <div class="text-sm text-gray-500">per student/year</div>
+                            <div class="text-xs text-yellow-600 mt-1">Save $20 annually</div>
                         </div>
                         
                         <ul class="space-y-3 mb-6 text-xs flex-grow">
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span><strong>Everything in Silver Sword</strong></span>
+                                <span><strong>Everything in Premium</strong></span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>Dedicated onboarding</span>
+                                <span>Annual progress report</span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>LMS integrations</span>
+                                <span>Early access to new features</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>10% class discount (if 75%+ join)</span>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
                                 <span>Priority support</span>
                             </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('student-annual')" class="w-full bg-yellow-600 text-white py-3 rounded-lg hover:bg-yellow-700 transition-colors font-medium">
+                            Save $20/Year
+                        </button>
+                    </div>
+
+                    <!-- Schools - Enterprise -->
+                    <div class="border-2 border-purple-400 dark:border-purple-500 rounded-xl p-6 relative bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 flex flex-col">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">Enterprise</span>
+                        </div>
+                        
+                        <div class="text-center mb-6">
+                            <div class="text-3xl mb-2">🏫</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Schools</h3>
+                            <div class="text-3xl font-bold text-purple-600 mb-2">Custom</div>
+                            <div class="text-sm text-gray-500">Contact for pricing</div>
+                            <div class="text-xs text-purple-600 mt-1">Volume discounts available</div>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-6 text-xs flex-grow">
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                <span>Unlimited teachers & students</span>
+                                <span><strong>Everything included</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>SSO & LMS integrations</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>School-wide analytics</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Custom onboarding & training</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Dedicated account manager</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Volume pricing (500+ students)</span>
                             </li>
                         </ul>
                         
-                        <button onclick="selectPlan('golden')" class="w-full bg-yellow-600 text-white py-3 rounded-lg hover:bg-yellow-700 transition-colors font-medium">
+                        <button onclick="selectPlan('enterprise')" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium">
                             Contact Sales
                         </button>
+                    </div>
+                </div>
+
+                <!-- Bulk Pricing Note -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-600 rounded-lg p-4 mb-6">
+                    <h4 class="font-semibold text-blue-800 dark:text-blue-200 mb-2">🎓 Classroom Bulk Pricing</h4>
+                    <div class="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                        <p>• <strong>25+ students:</strong> $7.99/month per student (20% off)</p>
+                        <p>• <strong>Class discount:</strong> 10% off when 75%+ of class joins annually</p>
+                        <p>• <strong>500+ students:</strong> Contact sales for custom volume pricing</p>
                     </div>
                 </div>
 
@@ -1162,40 +1361,136 @@
                     </div>
                 </div>
 
-                <!-- Step 1: Learning Objectives -->
+                <!-- Content Input Section -->
                 <div id="wizardStep1" class="space-y-6">
-                    <h4 class="text-xl font-bold mb-4">📝 Step 1: Define Learning Objectives</h4>
+                    <h4 class="text-xl font-bold mb-4">🤖 Create Battle Questions</h4>
                     
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            What should students be able to do after completing this assignment?
-                        </label>
-                        <textarea id="learningObjectives" rows="4" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="e.g., Students should be able to solve quadratic equations, graph parabolas, identify vertex form, and solve word problems involving quadratic relationships..."></textarea>
+                    <!-- Content Source Tabs -->
+                    <div class="flex border-b border-gray-200 dark:border-gray-600 mb-6">
+                        <button onclick="switchContentTab('create')" id="createContentTab" class="px-4 py-3 font-medium border-b-2 border-purple-600 text-purple-600">
+                            ✍️ Create New
+                        </button>
+                        <button onclick="switchContentTab('paste')" id="pasteContentTab" class="px-4 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            📝 Paste Questions
+                        </button>
+                        <button onclick="switchContentTab('upload')" id="uploadContentTab" class="px-4 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            📄 Upload PDF
+                        </button>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            Key Topics to Cover (optional)
-                        </label>
-                        <input type="text" id="keyTopics" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="e.g., quadratic formula, factoring, completing the square">
+                    <!-- Create New Questions -->
+                    <div id="createContentSection">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Topic/Subject to Create Questions About
+                            </label>
+                            <input type="text" id="questionTopic" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="e.g., Quadratic equations, World War 2, Photosynthesis, Shakespeare">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Difficulty Level</label>
+                                <select id="difficultyLevel" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate" selected>Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Question Style</label>
+                                <select id="questionStyle" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                                    <option value="multiple-choice" selected>Multiple Choice</option>
+                                    <option value="mixed">Mixed Types</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Difficulty Level</label>
-                            <select id="difficultyLevel" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                                <option value="beginner">Beginner</option>
-                                <option value="intermediate" selected>Intermediate</option>
-                                <option value="advanced">Advanced</option>
-                            </select>
+                    <!-- Paste Questions Section -->
+                    <div id="pasteContentSection" class="hidden">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Paste Your Existing Questions
+                            </label>
+                            <textarea id="pastedQuestions" rows="8" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Paste your questions here in any format, for example:
+
+1. What is 2+2?
+a) 3  b) 4  c) 5  d) 6
+Answer: b
+
+2. Who wrote Romeo and Juliet?
+A. Charles Dickens
+B. William Shakespeare  
+C. Mark Twain
+D. Jane Austen
+Correct: B
+
+AI will automatically format these into multiple choice battle questions!"></textarea>
+                        </div>
+
+                        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-600 rounded-lg p-4 mb-4">
+                            <h5 class="font-medium text-blue-800 dark:text-blue-200 mb-2">📝 Supported Formats:</h5>
+                            <div class="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                                <p>• <strong>Multiple Choice:</strong> Questions with A/B/C/D options</p>
+                                <p>• <strong>True/False:</strong> Simple T/F questions</p>
+                                <p>• <strong>Fill-in-the-blank:</strong> Questions with blanks to fill</p>
+                                <p>• <strong>Short Answer:</strong> Open-ended questions (AI will create choices)</p>
+                                <p>• <strong>Mixed Format:</strong> Combination of different question types</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Additional Instructions (optional)
+                            </label>
+                            <input type="text" id="pasteInstructions" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="e.g., Make all questions multiple choice, focus on key concepts, add explanations...">
+                        </div>
+                    </div>
+
+                    <!-- PDF Upload Section -->
+                    <div id="uploadContentSection" class="hidden">
+                        <div class="border-2 border-dashed border-purple-300 dark:border-purple-600 rounded-lg p-8">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">📄</div>
+                                <h5 class="text-lg font-semibold mb-2">Upload Learning Material</h5>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    Upload a PDF containing the content you want to create questions from.<br>
+                                    <span class="text-sm">(Textbook pages, worksheets, study guides, etc.)</span>
+                                </p>
+                                
+                                <div class="mb-4">
+                                    <input type="file" id="pdfUpload" accept=".pdf" class="hidden" onchange="handlePDFUpload(event)">
+                                    <button onclick="document.getElementById('pdfUpload').click()" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                                        📁 Choose PDF File
+                                    </button>
+                                </div>
+                                
+                                <div id="uploadStatus" class="hidden">
+                                    <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-600 rounded-lg p-4">
+                                        <div class="flex items-center justify-center space-x-2">
+                                            <span class="text-green-600 text-xl">✅</span>
+                                            <div>
+                                                <div class="font-medium text-green-800 dark:text-green-200" id="uploadedFileName">document.pdf</div>
+                                                <div class="text-sm text-green-600 dark:text-green-400">Ready to generate questions from this content</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-xs text-gray-500 mt-4">
+                                    <p>💡 <strong>Pro Tip:</strong> AI will analyze your PDF content and generate relevant questions automatically!</p>
+                                    <p class="mt-1">Supported: Educational PDFs up to 10MB</p>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Question Style</label>
-                            <select id="questionStyle" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                                <option value="multiple-choice" selected>Multiple Choice</option>
-                                <option value="mixed">Mixed Types</option>
-                            </select>
+                        <!-- Additional Instructions for PDF -->
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Additional Instructions (optional)
+                            </label>
+                            <textarea id="pdfInstructions" rows="3" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="e.g., Focus on chapter 3 concepts, emphasize problem-solving steps, include vocabulary questions..."></textarea>
                         </div>
                     </div>
 
@@ -2650,17 +2945,19 @@
                 <!-- Teacher Header -->
                 <header class="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700">
                     <div class="max-w-6xl mx-auto px-4 py-4">
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between min-h-[48px]">
                             <div class="flex items-center space-x-3">
-                                <img src="https://pfst.cf2.poecdn.net/base/image/ed436c7c96d0905072d34a73e8e5b41a0a3239416d72b91a324dbb1edac1a848?w=2206&h=527" alt="Rival You Logo" class="h-10 w-auto rounded-lg">
+                                <img src="https://pfst.cf2.poecdn.net/base/image/d8a0c0161f0dc8666c5197238093e8d8c7a3a51380a4b3b77a77a94a34f8628a?w=2191&h=634" alt="Rival You Logo" class="h-10 w-auto rounded-lg">
                             </div>
                             <div class="flex items-center space-x-4">
                                 <span class="text-sm text-gray-600 dark:text-gray-400">Welcome, Demo Teacher!</span>
-                                <button onclick="toggleTeacherMode()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-medium">
-                                    👨‍🎓 Student Mode
+                                <button onclick="toggleTeacherMode()" class="bg-green-600 text-white hover:bg-green-700 px-2 md:px-4 py-2 rounded-lg transition-colors font-medium text-sm whitespace-nowrap">
+                                    <span class="hidden md:inline">👨‍🎓 Student Mode</span>
+                                    <span class="md:hidden">👨‍🎓</span>
                                 </button>
-                                <button onclick="exitTeacherMode(); showWelcomeScreen();" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                                    ← Back to Sign Up
+                                <button onclick="exitTeacherMode(); showWelcomeScreen();" class="bg-blue-600 text-white hover:bg-blue-700 px-2 md:px-4 py-2 rounded-lg transition-colors font-medium text-sm whitespace-nowrap">
+                                    <span class="hidden md:inline">← Back to Sign Up</span>
+                                    <span class="md:hidden">← Sign Up</span>
                                 </button>
                             </div>
                         </div>
@@ -2811,6 +3108,81 @@
                                         <span>8/28 completed • <span class="text-blue-600">Click for details</span></span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rhino AI Controls -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            🦏 Rhino AI Tutor Controls
+                            <span class="ml-2 text-sm bg-purple-500 text-white px-2 py-1 rounded-full">Classroom Management</span>
+                        </h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Manual Control -->
+                            <div class="space-y-4">
+                                <h4 class="font-semibold text-gray-800 dark:text-gray-200">Manual Control</h4>
+                                
+                                <div onclick="toggleRhinoChatTeacher()" class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer transition-colors">
+                                    <div>
+                                        <div class="font-medium">Rhino Chat Status</div>
+                                        <div class="text-sm text-gray-600 dark:text-gray-400" id="rhinoStatusText">Currently enabled for all students</div>
+                                    </div>
+                                    <button id="rhinoToggleBtn" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-medium pointer-events-none">
+                                        🟢 Enabled
+                                    </button>
+                                </div>
+                                
+                                <div class="text-xs text-gray-500 dark:text-gray-400">
+                                    💡 <strong>Tip:</strong> Disable during lessons, enable during practice time
+                                </div>
+                            </div>
+                            
+                            <!-- Time-Based Control -->
+                            <div class="space-y-4">
+                                <h4 class="font-semibold text-gray-800 dark:text-gray-200">Schedule Auto-Lock</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-3">
+                                        <input type="checkbox" id="enableScheduleLock" onchange="toggleScheduleLock()" class="rounded text-purple-600 focus:ring-purple-500">
+                                        <label for="enableScheduleLock" class="text-sm font-medium">Enable automatic locking during specific hours</label>
+                                    </div>
+                                    
+                                    <div id="scheduleControls" class="space-y-3 opacity-50">
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <div>
+                                                <label class="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Lock From</label>
+                                                <input type="time" id="lockStartTime" value="09:00" class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" onchange="updateScheduleLock()" disabled>
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Lock Until</label>
+                                                <input type="time" id="lockEndTime" value="11:00" class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" onchange="updateScheduleLock()" disabled>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="text-xs text-gray-500 dark:text-gray-400" id="scheduleStatus">
+                                            ⏸️ Automatic locking disabled
+                                        </div>
+                                        
+                                        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-600 rounded p-2 text-xs">
+                                            <div class="text-blue-700 dark:text-blue-300">
+                                                <strong>💡 Smart Tip:</strong> Enable during lesson periods (e.g., 9:00-11:00 AM) to prevent distractions, then students can access Rhino during breaks and study time.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Current Status Display -->
+                        <div class="mt-6 p-4 border border-gray-200 dark:border-gray-600 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-medium text-gray-800 dark:text-gray-200">Current Student View</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400" id="studentViewStatus">Students can currently access Rhino AI tutor</div>
+                                </div>
+                                <div id="studentViewIcon" class="text-2xl">🦏</div>
                             </div>
                         </div>
                     </div>
@@ -3049,6 +3421,11 @@
             
             document.body.appendChild(teacherDashboard);
             
+            // Update Rhino controls to reflect current state
+            setTimeout(() => {
+                updateTeacherRhinoUI();
+            }, 100);
+            
             // Set default due date to next Friday
             const nextFriday = new Date();
             nextFriday.setDate(nextFriday.getDate() + (5 - nextFriday.getDay() + 7) % 7);
@@ -3064,11 +3441,23 @@
 
         // Open Question Generation Wizard (replaces old createAssignment)
         function createAssignment() {
-            const title = document.getElementById('assignmentTitle').value.trim();
-            const subject = document.getElementById('assignmentSubject').value;
-            const description = document.getElementById('assignmentDescription').value.trim();
-            const dueDate = document.getElementById('assignmentDueDate').value;
-            const questionCount = document.getElementById('assignmentQuestionCount').value;
+            const titleEl = document.getElementById('assignmentTitle');
+            const subjectEl = document.getElementById('assignmentSubject');
+            const descriptionEl = document.getElementById('assignmentDescription');
+            const dueDateEl = document.getElementById('assignmentDueDate');
+            const questionCountEl = document.getElementById('assignmentQuestionCount');
+
+            // Check if all required elements exist
+            if (!titleEl || !subjectEl || !descriptionEl || !dueDateEl || !questionCountEl) {
+                showCustomAlert('Assignment form elements not found. Please try again.');
+                return;
+            }
+
+            const title = titleEl.value.trim();
+            const subject = subjectEl.value;
+            const description = descriptionEl.value.trim();
+            const dueDate = dueDateEl.value;
+            const questionCount = questionCountEl.value;
 
             if (!title || !description || !dueDate) {
                 showCustomAlert('Please fill in all required fields!');
@@ -3085,27 +3474,51 @@
                 createdAt: new Date().toISOString()
             };
 
-            // Populate wizard summary
-            document.getElementById('wizardAssignmentTitle').textContent = title;
-            document.getElementById('wizardAssignmentSubject').textContent = subject.charAt(0).toUpperCase() + subject.slice(1);
-            document.getElementById('wizardQuestionCount').textContent = questionCount;
-            const dueDateFormatted = new Date(dueDate).toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                month: 'short', 
-                day: 'numeric' 
-            });
-            document.getElementById('wizardDueDate').textContent = dueDateFormatted;
+            // Show wizard modal first
+            const wizardModal = document.getElementById('questionWizardModal');
+            if (!wizardModal) {
+                showCustomAlert('Question wizard not available. Please try again.');
+                return;
+            }
 
-            // Reset wizard to step 1
-            document.getElementById('wizardStep1').classList.remove('hidden');
-            document.getElementById('wizardStep2').classList.add('hidden');
-            document.getElementById('wizardLoading').classList.add('hidden');
+            wizardModal.classList.remove('hidden');
 
-            // Pre-fill learning objectives based on description
-            document.getElementById('learningObjectives').value = description;
+            // Wait a moment for modal to render, then populate
+            setTimeout(() => {
+                // Populate wizard summary (with error checking)
+                const wizardTitleEl = document.getElementById('wizardAssignmentTitle');
+                const wizardSubjectEl = document.getElementById('wizardAssignmentSubject');
+                const wizardQuestionCountEl = document.getElementById('wizardQuestionCount');
+                const wizardDueDateEl = document.getElementById('wizardDueDate');
 
-            // Show wizard modal
-            document.getElementById('questionWizardModal').classList.remove('hidden');
+                if (wizardTitleEl) wizardTitleEl.textContent = title;
+                if (wizardSubjectEl) wizardSubjectEl.textContent = subject.charAt(0).toUpperCase() + subject.slice(1);
+                if (wizardQuestionCountEl) wizardQuestionCountEl.textContent = questionCount;
+                
+                if (wizardDueDateEl) {
+                    const dueDateFormatted = new Date(dueDate).toLocaleDateString('en-US', { 
+                        weekday: 'long', 
+                        month: 'short', 
+                        day: 'numeric' 
+                    });
+                    wizardDueDateEl.textContent = dueDateFormatted;
+                }
+
+                // Reset wizard to step 1
+                const wizardStep1 = document.getElementById('wizardStep1');
+                const wizardStep2 = document.getElementById('wizardStep2');
+                const wizardLoading = document.getElementById('wizardLoading');
+
+                if (wizardStep1) wizardStep1.classList.remove('hidden');
+                if (wizardStep2) wizardStep2.classList.add('hidden');
+                if (wizardLoading) wizardLoading.classList.add('hidden');
+
+                // Pre-fill topic based on description
+                const questionTopicEl = document.getElementById('questionTopic');
+                if (questionTopicEl) {
+                    questionTopicEl.value = description;
+                }
+            }, 100);
         }
 
         // Close Question Wizard
@@ -3115,14 +3528,69 @@
 
         // Generate questions using AI
         async function generateQuestions() {
-            const objectives = document.getElementById('learningObjectives').value.trim();
-            const keyTopics = document.getElementById('keyTopics').value.trim();
-            const difficulty = document.getElementById('difficultyLevel').value;
-            const questionStyle = document.getElementById('questionStyle').value;
+            // Determine which tab is active by checking which content section is visible
+            let activeTab = 'create'; // default
+            
+            if (!document.getElementById('pasteContentSection').classList.contains('hidden')) {
+                activeTab = 'paste';
+            } else if (!document.getElementById('uploadContentSection').classList.contains('hidden')) {
+                activeTab = 'upload';
+            } else if (!document.getElementById('createContentSection').classList.contains('hidden')) {
+                activeTab = 'create';
+            }
+            
+            let prompt = '';
+            
+            if (activeTab === 'paste') {
+                // Handle paste questions mode
+                const pastedQuestions = document.getElementById('pastedQuestions').value.trim();
+                const pasteInstructions = document.getElementById('pasteInstructions').value.trim();
+                
+                if (!pastedQuestions) {
+                    showCustomAlert('Please paste your questions first!');
+                    return;
+                }
+                
+                prompt = `@Claude-Sonnet-4 Convert these pasted questions into a standardized multiple-choice format. ${pasteInstructions ? 'Additional instructions: ' + pasteInstructions : ''}
 
-            if (!objectives) {
-                showCustomAlert('Please define learning objectives!');
-                return;
+Original Questions:
+${pastedQuestions}
+
+Convert to ${currentAssignmentData.questionCount} multiple choice questions. If there are more than ${currentAssignmentData.questionCount} questions, select the best ones. If there are fewer, create additional similar questions.
+
+Provide ONLY raw JSON in your response with no explanations, additional text, or code block formatting (no \`\`\`). Format: {"questions": [{"question": "Question text", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "Why this is correct"}]}`;
+
+            } else if (activeTab === 'upload') {
+                // Handle PDF upload mode
+                const pdfInstructions = document.getElementById('pdfInstructions').value.trim();
+                
+                if (!window.uploadedPDF) {
+                    showCustomAlert('Please upload a PDF file first!');
+                    return;
+                }
+                
+                prompt = `@Claude-Sonnet-4 Generate ${currentAssignmentData.questionCount} multiple choice questions based on the content in the uploaded PDF. ${pdfInstructions ? 'Focus on: ' + pdfInstructions : ''}
+
+Create questions that test understanding of the key concepts from the document.
+
+Provide ONLY raw JSON in your response with no explanations, additional text, or code block formatting (no \`\`\`). Format: {"questions": [{"question": "Question text", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "Why this is correct"}]}`;
+
+            } else {
+                // Handle create new mode (default)
+                const topic = document.getElementById('questionTopic').value.trim();
+                const difficulty = document.getElementById('difficultyLevel').value;
+                const questionStyle = document.getElementById('questionStyle').value;
+                
+                if (!topic) {
+                    showCustomAlert('Please enter a topic to create questions about!');
+                    return;
+                }
+                
+                prompt = `@Claude-Sonnet-4 Generate ${currentAssignmentData.questionCount} ${questionStyle} questions about "${topic}" at ${difficulty} level for ${currentAssignmentData.subject}.
+
+Create engaging, educational questions that test understanding of key concepts.
+
+Provide ONLY raw JSON in your response with no explanations, additional text, or code block formatting (no \`\`\`). Format: {"questions": [{"question": "Question text", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "Why this is correct"}]}`;
             }
 
             // Show loading state
@@ -3146,19 +3614,19 @@
                     }
                 });
 
-                // Create AI prompt for question generation
-                const prompt = `@Claude-Sonnet-4 Generate ${currentAssignmentData.questionCount} ${questionStyle} questions for ${currentAssignmentData.subject} at ${difficulty} level.
-
-Learning Objectives: ${objectives}
-${keyTopics ? `Key Topics: ${keyTopics}` : ''}
-
-Provide ONLY raw JSON in your response with no explanations, additional text, or code block formatting (no \`\`\`). Format: {"questions": [{"question": "Question text", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "Why this is correct"}]}`;
-
-                await window.Poe.sendUserMessage(prompt, {
+                // Send message with or without PDF attachment
+                const messageOptions = {
                     handler: "question-generator",
                     stream: false,
                     openChat: false
-                });
+                };
+
+                // Add PDF as attachment if in upload mode
+                if (activeTab === 'upload' && window.uploadedPDF) {
+                    messageOptions.attachments = [window.uploadedPDF];
+                }
+
+                await window.Poe.sendUserMessage(prompt, messageOptions);
             } catch (error) {
                 showQuestionError("Failed to generate questions. Please try again.");
             }
@@ -3246,6 +3714,141 @@ Provide ONLY raw JSON in your response with no explanations, additional text, or
         // Preview assignment (show how students will see it)
         function previewAssignment() {
             showCustomAlert('Preview would show students exactly how they\'ll experience this assignment in battle mode!');
+        }
+
+        // Handle PDF Upload
+        function handlePDFUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Validate file type
+            if (file.type !== 'application/pdf') {
+                showCustomAlert('Please upload a PDF file only.');
+                return;
+            }
+
+            // Validate file size (10MB limit)
+            const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+            if (file.size > maxSize) {
+                showCustomAlert('File size must be under 10MB. Please choose a smaller file.');
+                return;
+            }
+
+            // Show upload success
+            document.getElementById('uploadedFileName').textContent = file.name;
+            document.getElementById('uploadStatus').classList.remove('hidden');
+            
+            // Store the file for later use
+            window.uploadedPDF = file;
+            
+            showCustomAlert(`📄 ${file.name} uploaded successfully! AI will analyze this content when generating questions.`);
+        }
+
+        // Switch between content input tabs
+        function switchContentTab(tab) {
+            const createTab = document.getElementById('createContentTab');
+            const pasteTab = document.getElementById('pasteContentTab');
+            const uploadTab = document.getElementById('uploadContentTab');
+            const createSection = document.getElementById('createContentSection');
+            const pasteSection = document.getElementById('pasteContentSection');
+            const uploadSection = document.getElementById('uploadContentSection');
+
+            // Reset all tabs and sections
+            createTab.className = 'px-4 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300';
+            pasteTab.className = 'px-4 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300';
+            uploadTab.className = 'px-4 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300';
+            
+            createSection.classList.add('hidden');
+            pasteSection.classList.add('hidden');
+            uploadSection.classList.add('hidden');
+
+            if (tab === 'create') {
+                createTab.className = 'px-4 py-3 font-medium border-b-2 border-purple-600 text-purple-600';
+                createSection.classList.remove('hidden');
+            } else if (tab === 'paste') {
+                pasteTab.className = 'px-4 py-3 font-medium border-b-2 border-purple-600 text-purple-600';
+                pasteSection.classList.remove('hidden');
+            } else if (tab === 'upload') {
+                uploadTab.className = 'px-4 py-3 font-medium border-b-2 border-purple-600 text-purple-600';
+                uploadSection.classList.remove('hidden');
+            }
+        }
+
+        // Enhanced generate questions function to handle PDF uploads
+        async function generateQuestionsFromContent() {
+            const activeTab = document.getElementById('uploadContentTab').classList.contains('text-purple-600') ? 'upload' : 'manual';
+            
+            let objectives = '';
+            let keyTopics = '';
+            let additionalInstructions = '';
+            
+            if (activeTab === 'manual') {
+                objectives = document.getElementById('learningObjectives').value.trim();
+                keyTopics = document.getElementById('keyTopics').value.trim();
+                
+                if (!objectives) {
+                    showCustomAlert('Please define learning objectives!');
+                    return;
+                }
+            } else {
+                // PDF upload mode
+                if (!window.uploadedPDF) {
+                    showCustomAlert('Please upload a PDF file first!');
+                    return;
+                }
+                
+                additionalInstructions = document.getElementById('pdfInstructions').value.trim();
+                objectives = `Generate questions based on the uploaded PDF content. ${additionalInstructions ? 'Additional focus: ' + additionalInstructions : ''}`;
+            }
+
+            const difficulty = document.getElementById('difficultyLevel').value;
+            const questionStyle = document.getElementById('questionStyle').value;
+
+            // Show loading state
+            document.getElementById('wizardStep1').classList.add('hidden');
+            document.getElementById('wizardLoading').classList.remove('hidden');
+
+            try {
+                // Register handler for question generation
+                window.Poe.registerHandler("question-generator", (result) => {
+                    const response = result.responses[0];
+                    if (response.status === "complete") {
+                        try {
+                            const questionsData = JSON.parse(response.content);
+                            generatedQuestions = questionsData.questions || questionsData;
+                            displayGeneratedQuestions();
+                        } catch (e) {
+                            showQuestionError("Failed to parse questions. Please try again.");
+                        }
+                    } else if (response.status === "error") {
+                        showQuestionError("Failed to generate questions. Please try again.");
+                    }
+                });
+
+                // Create AI prompt
+                let prompt = `@Claude-Sonnet-4 Generate ${currentAssignmentData.questionCount} ${questionStyle} questions for ${currentAssignmentData.subject} at ${difficulty} level.
+
+${activeTab === 'manual' ? `Learning Objectives: ${objectives}` : `Instructions: ${objectives}`}
+${keyTopics ? `Key Topics: ${keyTopics}` : ''}
+
+Provide ONLY raw JSON in your response with no explanations, additional text, or code block formatting (no \`\`\`). Format: {"questions": [{"question": "Question text", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "Why this is correct"}]}`;
+
+                // Send message with or without PDF attachment
+                const messageOptions = {
+                    handler: "question-generator",
+                    stream: false,
+                    openChat: false
+                };
+
+                // Add PDF as attachment if available
+                if (activeTab === 'upload' && window.uploadedPDF) {
+                    messageOptions.attachments = [window.uploadedPDF];
+                }
+
+                await window.Poe.sendUserMessage(prompt, messageOptions);
+            } catch (error) {
+                showQuestionError("Failed to generate questions. Please try again.");
+            }
         }
 
         // Deploy assignment to students
@@ -3985,6 +4588,600 @@ Provide ONLY raw JSON in your response with no explanations, additional text, or
 
         // Add subscription tier to app state
         appState.subscriptionTier = 'free'; // 'free', 'premium', 'teacher'
+
+        // Battle Mode State
+        let currentBattleMode = 'bot'; // 'bot' or 'classmates'
+
+        // Battle Mode Switching
+        function switchBattleMode(mode) {
+            currentBattleMode = mode;
+            
+            const botBtn = document.getElementById('botModeBtn');
+            const classmatesBtn = document.getElementById('classmatesModeBtn');
+            const botView = document.getElementById('botBattleView');
+            const classmatesView = document.getElementById('classmatesBattleView');
+            
+            if (mode === 'bot') {
+                // Update button styles
+                botBtn.className = 'px-4 py-2 rounded-md bg-white/30 text-white font-medium transition-all';
+                classmatesBtn.className = 'px-4 py-2 rounded-md text-white/70 hover:bg-white/20 font-medium transition-all';
+                
+                // Show/hide views
+                botView.classList.remove('hidden');
+                classmatesView.classList.add('hidden');
+                
+                showCustomAlert('🤖 Switched to AI Rival mode! Battle against your procrastination rival!');
+            } else {
+                // Update button styles
+                classmatesBtn.className = 'px-4 py-2 rounded-md bg-white/30 text-white font-medium transition-all';
+                botBtn.className = 'px-4 py-2 rounded-md text-white/70 hover:bg-white/20 font-medium transition-all';
+                
+                // Show/hide views
+                classmatesView.classList.remove('hidden');
+                botView.classList.add('hidden');
+                
+                showCustomAlert('👥 Switched to Classmates mode! Challenge your friends to study battles!');
+            }
+        }
+
+        // Challenge Classmate Function
+        function challengeClassmate(name, avatar, level) {
+            showCustomAlert(`⚔️ Challenging ${name} to a study battle! Pick a subject and show them who's the real scholar!`);
+            
+            // Create challenge modal
+            const challengeModal = document.createElement('div');
+            challengeModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            challengeModal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full mx-4 p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">${avatar}</div>
+                        <h3 class="text-2xl font-bold mb-2">Challenge ${name}</h3>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Level ${level} • Choose your battle subject</div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <button onclick="startClassmateBattle('${name}', '${avatar}', 'math')" class="w-full bg-yellow-500 text-white py-3 rounded-lg hover:bg-yellow-600 transition-colors">
+                            📊 Math Battle
+                        </button>
+                        <button onclick="startClassmateBattle('${name}', '${avatar}', 'science')" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                            🧪 Science Battle
+                        </button>
+                        <button onclick="startClassmateBattle('${name}', '${avatar}', 'history')" class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors">
+                            📚 History Battle
+                        </button>
+                        <button onclick="startClassmateBattle('${name}', '${avatar}', 'english')" class="w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition-colors">
+                            📝 English Battle
+                        </button>
+                    </div>
+                    
+                    <button onclick="this.closest('.fixed').remove()" class="w-full bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition-colors">
+                        Cancel
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(challengeModal);
+        }
+
+        // Start Classmate Battle
+        function startClassmateBattle(opponentName, opponentAvatar, subject) {
+            // Close challenge modal - find the specific challenge modal and remove it
+            const challengeModals = document.querySelectorAll('.fixed.inset-0');
+            challengeModals.forEach(modal => {
+                if (modal.innerHTML.includes('Challenge ' + opponentName)) {
+                    modal.remove();
+                }
+            });
+            
+            // Create a playable battle against classmate
+            showCustomAlert(`⚔️ Entering battlefield against ${opponentName}! Answer questions to prove your knowledge!`);
+            
+            // Initialize classmate battlefield state
+            currentBattlefield = {
+                taskId: 'classmate-battle',
+                subject: subject,
+                currentQuestion: 0,
+                score: 0,
+                opponentName: opponentName,
+                opponentAvatar: opponentAvatar,
+                studentBattleXP: gameState.studentXP,
+                rivalBattleXP: gameState.rivalXP, // We'll simulate opponent progress
+                studentBattleLevel: gameState.studentLevel,
+                rivalBattleLevel: gameState.rivalLevel,
+                isClassmateBattle: true
+            };
+            
+            // Open battlefield interface for classmate battle
+            openClassmateBattlefield(opponentName, opponentAvatar, subject);
+        }
+
+        // Open classmate battlefield interface
+        function openClassmateBattlefield(opponentName, opponentAvatar, subject) {
+            // Set battlefield title for classmate battle
+            document.getElementById('battlefieldTitle').textContent = `⚔️ ${subject.charAt(0).toUpperCase() + subject.slice(1)} Battle vs ${opponentName}`;
+            
+            // Initialize battle displays for classmate battle
+            document.getElementById('battleStudentPower').textContent = `Level ${currentBattlefield.studentBattleLevel}`;
+            document.getElementById('battleRivalPower').textContent = `Level ${currentBattlefield.rivalBattleLevel}`;
+            
+            // Show level progress as bars
+            const studentProgress = getLevelProgress(currentBattlefield.studentBattleXP, currentBattlefield.studentBattleLevel);
+            const rivalProgress = getLevelProgress(currentBattlefield.rivalBattleXP, currentBattlefield.rivalBattleLevel);
+            
+            document.getElementById('battleStudentBar').style.width = `${studentProgress}%`;
+            document.getElementById('battleRivalBar').style.width = `${rivalProgress}%`;
+            
+            // Create classmate quiz questions for the subject
+            const classmateQuizzes = {
+                math: {
+                    name: `Math Battle vs ${opponentName}`,
+                    questions: [
+                        {
+                            question: "What is 25% of 200?",
+                            options: ["40", "50", "60", "75"],
+                            correct: 1
+                        },
+                        {
+                            question: "Solve: 3x + 12 = 27",
+                            options: ["x = 3", "x = 5", "x = 7", "x = 9"],
+                            correct: 1
+                        },
+                        {
+                            question: "What is the area of a rectangle with length 8 and width 6?",
+                            options: ["28", "36", "42", "48"],
+                            correct: 3
+                        },
+                        {
+                            question: "What is 7²?",
+                            options: ["14", "42", "49", "56"],
+                            correct: 2
+                        }
+                    ]
+                },
+                science: {
+                    name: `Science Battle vs ${opponentName}`,
+                    questions: [
+                        {
+                            question: "What gas do plants release during photosynthesis?",
+                            options: ["Carbon dioxide", "Nitrogen", "Oxygen", "Hydrogen"],
+                            correct: 2
+                        },
+                        {
+                            question: "How many bones are in the adult human body?",
+                            options: ["186", "206", "226", "246"],
+                            correct: 1
+                        },
+                        {
+                            question: "What is the speed of light?",
+                            options: ["300,000 km/s", "150,000 km/s", "450,000 km/s", "600,000 km/s"],
+                            correct: 0
+                        },
+                        {
+                            question: "What is the chemical symbol for iron?",
+                            options: ["Ir", "In", "Fe", "Fi"],
+                            correct: 2
+                        }
+                    ]
+                },
+                history: {
+                    name: `History Battle vs ${opponentName}`,
+                    questions: [
+                        {
+                            question: "Who was the first president of the United States?",
+                            options: ["John Adams", "George Washington", "Thomas Jefferson", "Benjamin Franklin"],
+                            correct: 1
+                        },
+                        {
+                            question: "In what year did the American Civil War end?",
+                            options: ["1863", "1864", "1865", "1866"],
+                            correct: 2
+                        },
+                        {
+                            question: "Which empire was ruled by Julius Caesar?",
+                            options: ["Greek Empire", "Roman Empire", "Persian Empire", "Egyptian Empire"],
+                            correct: 1
+                        },
+                        {
+                            question: "What year did World War I begin?",
+                            options: ["1912", "1914", "1916", "1918"],
+                            correct: 1
+                        }
+                    ]
+                },
+                english: {
+                    name: `English Battle vs ${opponentName}`,
+                    questions: [
+                        {
+                            question: "What is the plural of 'child'?",
+                            options: ["childs", "children", "childes", "child"],
+                            correct: 1
+                        },
+                        {
+                            question: "Which word is a synonym for 'angry'?",
+                            options: ["happy", "sad", "furious", "tired"],
+                            correct: 2
+                        },
+                        {
+                            question: "What is the past tense of 'run'?",
+                            options: ["runned", "ran", "runs", "running"],
+                            correct: 1
+                        },
+                        {
+                            question: "What type of word is 'quickly'?",
+                            options: ["noun", "verb", "adjective", "adverb"],
+                            correct: 3
+                        }
+                    ]
+                }
+            };
+            
+            // Update the battlefield with classmate quiz data
+            battlefieldQuizzes[subject] = classmateQuizzes[subject] || classmateQuizzes.math;
+            
+            // Set question progress
+            const totalQuestions = battlefieldQuizzes[subject].questions.length;
+            document.getElementById('totalQuestions').textContent = totalQuestions;
+            document.getElementById('currentQuestionNum').textContent = '1';
+            document.getElementById('questionProgress').style.width = '0%';
+            
+            // Custom ready screen for classmate battles
+            document.getElementById('battleQuestionContent').innerHTML = `
+                <div class="text-center">
+                    <div class="flex justify-center items-center space-x-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">🧠</div>
+                            <div class="font-bold">You</div>
+                            <div class="text-sm text-blue-600">Level ${gameState.studentLevel}</div>
+                        </div>
+                        <div class="text-6xl text-gray-400">VS</div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">${opponentAvatar}</div>
+                            <div class="font-bold">${opponentName}</div>
+                            <div class="text-sm text-gray-600">Classmate</div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Ready for ${subject.charAt(0).toUpperCase() + subject.slice(1)} Battle?</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">First to answer correctly wins each round! Show ${opponentName} your knowledge!</p>
+                    <button onclick="startBattleQuiz()" class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium text-lg">
+                        ⚔️ Begin Battle!
+                    </button>
+                </div>
+            `;
+            
+            // Show battlefield modal
+            document.getElementById('battlefieldModal').classList.remove('hidden');
+        }
+
+        // Global Rhino controls (persistent across mode switches)
+        let rhinoChatEnabled = true;
+        let scheduleEnabled = false;
+        let scheduleLockStart = '09:00';
+        let scheduleLockEnd = '11:00';
+
+        function toggleRhinoChatTeacher() {
+            rhinoChatEnabled = !rhinoChatEnabled;
+            
+            const toggleBtn = document.getElementById('rhinoToggleBtn');
+            const statusText = document.getElementById('rhinoStatusText');
+            const studentViewStatus = document.getElementById('studentViewStatus');
+            const studentViewIcon = document.getElementById('studentViewIcon');
+
+            if (rhinoChatEnabled) {
+                toggleBtn.textContent = '🟢 Enabled';
+                toggleBtn.className = 'bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-medium pointer-events-none';
+                statusText.textContent = 'Currently enabled for all students';
+                studentViewStatus.textContent = 'Students can currently access Rhino AI tutor';
+                studentViewIcon.textContent = '🦏';
+            } else {
+                toggleBtn.textContent = '🔴 Disabled';
+                toggleBtn.className = 'bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-medium pointer-events-none';
+                statusText.textContent = 'Currently disabled for all students';
+                studentViewStatus.textContent = 'Students cannot currently access Rhino AI tutor';
+                studentViewIcon.textContent = '🔒';
+            }
+
+            updateRhinoChatButton();
+            showCustomAlert(rhinoChatEnabled ? '🦏 Rhino Chat enabled for all students!' : '🔒 Rhino Chat disabled for all students.');
+        }
+
+        function toggleScheduleLock() {
+            scheduleEnabled = document.getElementById('enableScheduleLock').checked;
+            const scheduleControls = document.getElementById('scheduleControls');
+            
+            if (scheduleEnabled) {
+                scheduleControls.style.opacity = '1';
+                scheduleControls.querySelectorAll('input').forEach(input => input.disabled = false);
+                updateScheduleLock();
+            } else {
+                scheduleControls.style.opacity = '0.5';
+                scheduleControls.querySelectorAll('input').forEach(input => input.disabled = true);
+                document.getElementById('scheduleStatus').textContent = '⏸️ Automatic locking disabled';
+            }
+        }
+
+        function updateScheduleLock() {
+            if (!scheduleEnabled) return;
+            
+            scheduleLockStart = document.getElementById('lockStartTime').value;
+            scheduleLockEnd = document.getElementById('lockEndTime').value;
+            
+            const startTime = new Date(`2000-01-01 ${scheduleLockStart}`);
+            const endTime = new Date(`2000-01-01 ${scheduleLockEnd}`);
+            
+            const startFormatted = startTime.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'});
+            const endFormatted = endTime.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'});
+            
+            document.getElementById('scheduleStatus').textContent = 
+                `🕐 Rhino will be locked from ${startFormatted} to ${endFormatted} on school days`;
+        }
+
+        // Legacy function for backward compatibility
+        function toggleRhinoChat() {
+            toggleRhinoChatTeacher();
+        }
+
+        // Update teacher Rhino UI to reflect current state
+        function updateTeacherRhinoUI() {
+            const toggleBtn = document.getElementById('rhinoToggleBtn');
+            const statusText = document.getElementById('rhinoStatusText');
+            const studentViewStatus = document.getElementById('studentViewStatus');
+            const studentViewIcon = document.getElementById('studentViewIcon');
+
+            if (!toggleBtn || !statusText || !studentViewStatus || !studentViewIcon) {
+                return; // Elements not found, probably not in teacher mode
+            }
+
+            if (rhinoChatEnabled) {
+                toggleBtn.textContent = '🟢 Enabled';
+                toggleBtn.className = 'bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-medium pointer-events-none';
+                statusText.textContent = 'Currently enabled for all students';
+                studentViewStatus.textContent = 'Students can currently access Rhino AI tutor';
+                studentViewIcon.textContent = '🦏';
+            } else {
+                toggleBtn.textContent = '🔴 Disabled';
+                toggleBtn.className = 'bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-medium pointer-events-none';
+                statusText.textContent = 'Currently disabled for all students';
+                studentViewStatus.textContent = 'Students cannot currently access Rhino AI tutor';
+                studentViewIcon.textContent = '🔒';
+            }
+
+            // Update schedule controls if they exist
+            const enableScheduleLock = document.getElementById('enableScheduleLock');
+            const lockStartTime = document.getElementById('lockStartTime');
+            const lockEndTime = document.getElementById('lockEndTime');
+            const scheduleControls = document.getElementById('scheduleControls');
+
+            if (enableScheduleLock) {
+                enableScheduleLock.checked = scheduleEnabled;
+            }
+            if (lockStartTime) {
+                lockStartTime.value = scheduleLockStart;
+            }
+            if (lockEndTime) {
+                lockEndTime.value = scheduleLockEnd;
+            }
+            if (scheduleControls) {
+                if (scheduleEnabled) {
+                    scheduleControls.style.opacity = '1';
+                    scheduleControls.querySelectorAll('input').forEach(input => input.disabled = false);
+                    updateScheduleLock();
+                } else {
+                    scheduleControls.style.opacity = '0.5';
+                    scheduleControls.querySelectorAll('input').forEach(input => input.disabled = true);
+                    const scheduleStatus = document.getElementById('scheduleStatus');
+                    if (scheduleStatus) {
+                        scheduleStatus.textContent = '⏸️ Automatic locking disabled';
+                    }
+                }
+            }
+        }
+
+        // Update Rhino chat button based on teacher settings
+        function updateRhinoChatButton() {
+            const rhinoButton = document.getElementById('rhinoChatButton');
+            if (!rhinoButton) return;
+
+            if (rhinoChatEnabled) {
+                rhinoButton.className = 'w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white p-4 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105';
+                rhinoButton.innerHTML = `
+                    <div class="flex items-center justify-center space-x-3">
+                        <span class="text-2xl">🦏</span>
+                        <div class="text-left">
+                            <div class="font-bold">Chat with Rhino</div>
+                            <div class="text-sm opacity-90">Ask questions, get help instantly!</div>
+                        </div>
+                    </div>
+                `;
+                rhinoButton.onclick = openAITutorChat;
+            } else {
+                rhinoButton.className = 'w-full bg-gray-400 text-gray-600 p-4 rounded-lg cursor-not-allowed opacity-75';
+                rhinoButton.innerHTML = `
+                    <div class="flex items-center justify-center space-x-3">
+                        <span class="text-2xl">🔒</span>
+                        <div class="text-left">
+                            <div class="font-bold">Rhino Chat Locked</div>
+                            <div class="text-sm opacity-90">Teacher has disabled chat during class time</div>
+                        </div>
+                    </div>
+                `;
+                rhinoButton.onclick = () => {
+                    showCustomAlert('🔒 Rhino Chat is currently locked by your teacher. Available after class!');
+                };
+            }
+        }
+
+        // AI Tutor Chat functionality
+        async function openAITutorChat() {
+            if (!rhinoChatEnabled) {
+                showCustomAlert('🔒 Rhino Chat is currently locked by your teacher. Available after class!');
+                return;
+            }
+
+            // For demo, we'll simulate a chat interface
+            const chatModal = document.createElement('div');
+            chatModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            chatModal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] flex flex-col">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-3xl">🦏</span>
+                                <div>
+                                    <h3 class="text-xl font-bold">Rhino AI Tutor</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Your personal study assistant</p>
+                                </div>
+                            </div>
+                            <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">✕</button>
+                        </div>
+                    </div>
+                    
+                    <div id="chatMessages" class="flex-1 p-6 overflow-y-auto space-y-4 max-h-96">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-2xl">🦏</span>
+                            <div class="bg-purple-100 dark:bg-purple-900/30 rounded-lg p-3 flex-1">
+                                <p class="text-purple-800 dark:text-purple-200">Hi! I'm Rhino, your AI study buddy! I can help you with homework, explain concepts, or just chat about what you're learning. What can I help you with today?</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex space-x-3">
+                            <input type="text" id="chatInput" placeholder="Ask Rhino anything about your studies..." class="flex-1 px-4 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" onkeypress="if(event.key==='Enter') sendChatMessage()">
+                            <button onclick="sendChatMessage()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                                Send
+                            </button>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-2">💡 Try asking: "Help me with algebra" or "Explain photosynthesis"</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(chatModal);
+            
+            // Focus the input
+            setTimeout(() => {
+                document.getElementById('chatInput').focus();
+            }, 100);
+        }
+
+        // Send chat message to Rhino
+        async function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'flex items-start space-x-3 justify-end';
+            userMessage.innerHTML = `
+                <div class="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <p class="text-blue-800 dark:text-blue-200">${message}</p>
+                </div>
+                <span class="text-2xl">🧠</span>
+            `;
+            chatMessages.appendChild(userMessage);
+            
+            // Clear input
+            input.value = '';
+            
+            // Add loading message
+            const loadingMessage = document.createElement('div');
+            loadingMessage.className = 'flex items-start space-x-3';
+            loadingMessage.innerHTML = `
+                <span class="text-2xl">🦏</span>
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 flex-1">
+                    <p class="text-gray-600 dark:text-gray-400">Rhino is thinking... 🤔</p>
+                </div>
+            `;
+            chatMessages.appendChild(loadingMessage);
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                // Register handler for Rhino's response
+                window.Poe.registerHandler("rhino-chat", (result) => {
+                    const response = result.responses[0];
+                    if (response.status === "complete" || response.status === "incomplete") {
+                        // Remove loading message
+                        if (loadingMessage.parentNode) {
+                            loadingMessage.remove();
+                        }
+                        
+                        // Add or update Rhino's response
+                        let rhinoResponse = document.getElementById('current-rhino-response');
+                        if (!rhinoResponse) {
+                            rhinoResponse = document.createElement('div');
+                            rhinoResponse.id = 'current-rhino-response';
+                            rhinoResponse.className = 'flex items-start space-x-3';
+                            rhinoResponse.innerHTML = `
+                                <span class="text-2xl">🦏</span>
+                                <div class="bg-purple-100 dark:bg-purple-900/30 rounded-lg p-3 flex-1">
+                                    <p class="text-purple-800 dark:text-purple-200" id="rhino-response-text"></p>
+                                </div>
+                            `;
+                            chatMessages.appendChild(rhinoResponse);
+                        }
+                        
+                        // Update response text
+                        const responseText = document.getElementById('rhino-response-text');
+                        if (responseText) {
+                            responseText.textContent = response.content;
+                        }
+                        
+                        // If complete, remove the ID so future responses create new elements
+                        if (response.status === "complete") {
+                            rhinoResponse.removeAttribute('id');
+                        }
+                        
+                        // Scroll to bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    } else if (response.status === "error") {
+                        // Remove loading message and show error
+                        if (loadingMessage.parentNode) {
+                            loadingMessage.remove();
+                        }
+                        
+                        const errorMessage = document.createElement('div');
+                        errorMessage.className = 'flex items-start space-x-3';
+                        errorMessage.innerHTML = `
+                            <span class="text-2xl">🦏</span>
+                            <div class="bg-red-100 dark:bg-red-900/30 rounded-lg p-3 flex-1">
+                                <p class="text-red-800 dark:text-red-200">Sorry, I'm having trouble right now. Please try again!</p>
+                            </div>
+                        `;
+                        chatMessages.appendChild(errorMessage);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }
+                });
+
+                // Send message to Claude as Rhino
+                await window.Poe.sendUserMessage(
+                    `@Claude-Sonnet-4 You are Rhino, a friendly AI tutor for students. Respond in a helpful, encouraging way to this student question: "${message}". Keep responses concise but informative. Use emojis sparingly and be supportive of their learning journey.`,
+                    {
+                        handler: "rhino-chat",
+                        stream: true,
+                        openChat: false
+                    }
+                );
+            } catch (error) {
+                // Remove loading message and show error
+                if (loadingMessage.parentNode) {
+                    loadingMessage.remove();
+                }
+                
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'flex items-start space-x-3';
+                errorMessage.innerHTML = `
+                    <span class="text-2xl">🦏</span>
+                    <div class="bg-red-100 dark:bg-red-900/30 rounded-lg p-3 flex-1">
+                        <p class="text-red-800 dark:text-red-200">Sorry, I'm having trouble connecting right now. Please try again!</p>
+                    </div>
+                `;
+                chatMessages.appendChild(errorMessage);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
 
         // Initialize
         updatePowerLevels();
